@@ -23,16 +23,12 @@ var stringifyJSON = function(obj){
 		for (var k in obj){
 			var kType = findType(obj[k]);
 			if (kType !== '[object Function]' && kType !== '[object Undefined]'){
-				collection.push("\"" + k + "\":" + stringifyJSON(obj[k]));
+				collection.push('"' + k + '":' + stringifyJSON(obj[k]));
 			}
 		}
 		return '{' + collection.join(',') + '}';
 	case '[object String]':
 		return '"' + obj + '"';
-	case '[object Function]':
-		return '';
-	case '[object Undefined]':
-		return '';
 	default:
 		return String(obj);
 	}
