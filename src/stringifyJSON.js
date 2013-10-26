@@ -7,8 +7,9 @@
 var stringifyJSON = function(obj){
 	var findType = function(element){
 		return Object.prototype.toString.apply(element);
-	}
-	var type = findType(obj);
+	},
+	type = findType(obj);
+
 	switch(type)
 	{
 	case '[object Array]':
