@@ -8,7 +8,7 @@ var getElementsByClassName = function (className) {
 	var results = [];
 	var $nodes = document.body.childNodes;
 	var findClass = function(nodes){
-		_.each(nodes, function(node){
+		_(nodes).each(function(node){
 			if(node.classList && node.classList.contains(className)){
 				results.push(node);
 			}
