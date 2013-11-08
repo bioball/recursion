@@ -5,30 +5,30 @@
 
 //helper function
 var stringifyJSON = function(obj){
-	var 
-		findType = function(element){ return Object.prototype.toString.apply(element) },
-		type 		 = findType(obj);
+  var 
+    findType = function(element){ return Object.prototype.toString.apply(element) },
+    type     = findType(obj);
 
-	switch(type)
-	{
-	case '[object Array]':
-		var collection = []
-		_(obj).each(function(element){
-			collection.push(stringifyJSON(element));
-		})
-		return '[' + collection.join(',') + ']';
-	case '[object Object]':
-		var collection = []
-		for (var key in obj){
-			var keyType = findType(obj[key]);
-			if (keyType !== '[object Function]' && keyType !== '[object Undefined]'){
-				collection.push('"' + key + '":' + stringifyJSON(obj[key]));
-			}
-		}
-		return '{' + collection.join(',') + '}';
-	case '[object String]':
-		return '"' + obj + '"';
-	default:
-		return String(obj);
-	}
+  switch(type)
+  {
+  case '[object Array]':
+    var collection = []
+    _(obj).each(function(element){
+      collection.push(stringifyJSON(element));
+    })
+    return '[' + collection.join(',') + ']';
+  case '[object Object]':
+    var collection = []
+    for (var key in obj){
+      var keyType = findType(obj[key]);
+      if (keyType !== '[object Function]' && keyType !== '[object Undefined]'){
+        collection.push('"' + key + '":' + stringifyJSON(obj[key]));
+      }
+    }
+    return '{' + collection.join(',') + '}';
+  case '[object String]':
+    return '"' + obj + '"';
+  default:
+    return String(obj);
+  }
 };
