@@ -20,8 +20,8 @@ var stringifyJSON = function(obj){
   case '[object Object]':
     var collection = []
     _(obj).each(function(element, key){
-      var keyType = findType(element);
-      if (keyType !== '[object Function]' && keyType !== '[object Undefined]'){
+      var elementType = findType(element);
+      if (elementType !== '[object Function]' && elementType !== '[object Undefined]'){
         collection.push('"' + key + '":' + stringifyJSON(element));
       }
     })
