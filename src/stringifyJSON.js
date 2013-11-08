@@ -19,12 +19,12 @@ var stringifyJSON = function(obj){
     return '[' + collection.join(',') + ']';
   case '[object Object]':
     var collection = []
-    for (var key in obj){
-      var keyType = findType(obj[key]);
+    _(obj).each(function(element, key){
+      var keyType = findType(element);
       if (keyType !== '[object Function]' && keyType !== '[object Undefined]'){
-        collection.push('"' + key + '":' + stringifyJSON(obj[key]));
+        collection.push('"' + key + '":' + stringifyJSON(element));
       }
-    }
+    })
     return '{' + collection.join(',') + '}';
   case '[object String]':
     return '"' + obj + '"';
